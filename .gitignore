@@ -1,0 +1,33 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+*.opendb
+*.ipch
+
+# Build output
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+
+# Compiler artifacts
+*.obj
+*.pdb
+*.ilk
+*.exe
+*.log
+*.tlog
+*.lastbuildstate
+*.recipe
+
+# Temporary Microsoft Word files
+~$*.docx
+
+# Windows
+Thumbs.db
+Desktop.ini
