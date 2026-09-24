@@ -10,13 +10,8 @@ struct node
 	int priority; 
 };
 
-struct node* head = NULL, * last = NULL, * f = NULL; 
-int dlinna = 0;
-
+struct node* head = NULL, * last = NULL; 
 void spstore(void), review(void), del(char* name);
-
-char find_el[256];
-struct node* find(char* name); 
 struct node* get_struct(void); 
 
 
@@ -96,7 +91,50 @@ void review(void)
 	return;
 }
 
+void del(char* name)
+{
+	struct node* struc = head;
+	struct node* prev = NULL;
+	int flag = 0;
+
+	if (head == NULL)
+	{
+		printf("—писок пуст\n");
+		return;
+	}
+
+	while (struc)
+	{
+		if (strcmp(name, struc->inf) == 0)
+		{
+			flag = 1;
+			if (prev == NULL)
+				head = struc->next;      // удал€ем голову
+			else
+				prev->next = struc->next; // удал€ем середину/хвост
+
+			if (struc == last)
+				last = prev;             // обновл€ем last
+
+			struct node* tmp = struc;
+			struc = struc->next;
+			free(tmp);
+			// prev Ќ≈ двигаем Ч он остаЄтс€ указывать на предыдущий
+		}
+		else
+		{
+			prev = struc;
+			struc = struc->next;
+		}
+	}
+
+	if (flag == 0)
+		printf("Ёлемент не найден\n");
+}
+
 void main() {
+	char name[256];
+
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	spstore();
@@ -105,4 +143,8 @@ void main() {
 
 	review();
 
+	printf("¬ведите им€ дл€ удалени€: ");
+	scanf("%s", name);
+	del(name);
+	review();
 }
