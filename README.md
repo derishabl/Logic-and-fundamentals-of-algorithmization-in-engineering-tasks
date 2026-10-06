@@ -1,1 +1,0 @@
-# Logic-and-fundamentals-of-algorithmization-in-engineering-tasks
